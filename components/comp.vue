@@ -1,12 +1,9 @@
 <template>
-  <div class="hello">Hello {{ who }} <comp></comp></div>
+  <div class="hello">aaaaadasadsadsaaa {{ who }}</div>
 </template>
 
 <script>
 module.exports = {
-  components: {
-    comp: httpVueLoader("components/comp.vue"),
-  },
   data: function () {
     return {
       who: "world",
