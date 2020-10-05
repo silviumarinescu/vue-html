@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vue Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
+    <script
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"
+      crossorigin
+    ></script>
+
+    <script>
+      Babel.registerPreset("preset", {
+        presets: [[Babel.availablePresets["es2015"], { modules: false }]],
+        plugins: [[Babel.availablePlugins["transform-modules-umd"]]],
+        moduleId: "main",
+      });
+    </script>
+
+    <script
+      type="text/babel"
+      src="components/test.vue"
+      data-plugins="transform-modules-umd"
+    ></script>
+    <script type="text/babel" data-presets="preset">
+      /// console.log("test");
+      import test from "./components/test.vue";
+      console.log(test);
+      //   ReactDOM.render(<App />, document.getElementById("root"));
+
+      var app5 = new Vue({
+        el: "#root",
+        template: `
+        <div>
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Reverse Message</button>
+        </div>`,
+        data: {
+          message: "Hello Vue.js!",
+        },
+        methods: {
+          reverseMessage: function () {
+            this.message = this.message.split("").reverse().join("");
+          },
+        },
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
